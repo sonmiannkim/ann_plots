@@ -1,4 +1,4 @@
-#Plotly and Belly Button Biodiversity From Bacteria to Beef
+# Plotly and Belly Button Biodiversity From Bacteria to Beef
 
 ## Overview of the Belly Button Biodiversity
 **The project was created to gather the information from the JSON data file, process it, 
