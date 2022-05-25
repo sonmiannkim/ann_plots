@@ -132,14 +132,24 @@ function buildBarCharts(sample) {
     // 9. Create the layout for the bar chart.
     var barData = [barTrace];
     var barLayout = {
-      title: "Top 10 Bacteria Cultures Found",
+      title: "Top 10 Bacteria Cultures Found",      
+      xaxis: {
+        title: {
+          text: '<b>Bar chart :</b> It is appropriate to visualize <br> how data is distributed across a number of categories.',
+          font: {
+            family: 'Courier New, monospace',
+            size: 12,
+            color: '#7f7f7f'
+          }
+        }
+      },
+      paper_bgcolor: "lightblue"
     };
     // 10. Use Plotly to plot the data with the layout.
     Plotly.newPlot("bar", barData, barLayout);
   });
 }
 
-// Bar and Bubble charts
 // Create the buildCharts function.
 function buildBubbleCharts(sample) {
   // Use d3.json to load and retrieve the samples.json file
@@ -163,11 +173,7 @@ function buildBubbleCharts(sample) {
         "(" + id + ", " + sampleValues[index] + ")  " + sampleLabels[index];
       return hoverTextDisplay;
     });
-    //console.log(hovorText);
-
-    //var hovorText = d3.entries(result.otu_labels).map(function (d) {
-    //  return d.value.sampleLabel;
-    // });
+    //console.log(hovorText);   
 
     var d3colors = Plotly.d3.scale.category10();
     var bubbleTrace = {
@@ -186,11 +192,22 @@ function buildBubbleCharts(sample) {
     var bubbleData = [bubbleTrace];
 
     var bubbleLayout = {
-      title: "Bacteria Cultures Per Sample",
+      title: "Bacteria Cultures Per Sample",      
       showlegend: false,
+      paper_bgcolor: "lightblue",
       height: 600,
       width: 900,
       plot_bgcolor: "rgb(243, 243, 243)",
+      xaxis: {
+        title: {
+          text: '<b>Bubble chart :</b> It is helpful in providing an instant view of the relative popularity of the result.',
+          font: {
+            family: 'Courier New, monospace',
+            size: 12,
+            color: '#7f7f7f'
+          }
+        }
+      }     
     };
 
     Plotly.newPlot("bubble", bubbleData, bubbleLayout);
@@ -235,7 +252,7 @@ function buildGaugeCharts(sample) {
         domain: { x: [0, 1], y: [0, 1] },
         value: xticks,
         title: {
-          text: '<b>Belly Button Washing Freqency</b> <br>  Scrubs per Week '
+          text: '<b>Belly Button Washing Freqency</b> <br>  Scrubs per Week <br>',
          },
         type: "indicator",
         mode: "gauge+number",
@@ -247,12 +264,17 @@ function buildGaugeCharts(sample) {
             { range: [4, 6], color: "yellow" },
             { range: [6, 8], color: "springgreen" },
             { range: [8, 10], color: "green" },
-          ],          
-        },
-      },
+          ]          
+        }
+      }
     ];
 
-    var gaugeLayout = { width: 450, height: 450, margin: { t: 0, b: 0 }, color:'aqua'};
+    var gaugeLayout = {       
+      width: 450, 
+      height: 450, 
+      margin: { t: 0, b: 0 }, 
+      paper_bgcolor: "lightblue"           
+    };
 
     // 6. Use Plotly to plot the gauge data and layout.
     Plotly.newPlot("gauge", gaugeData, gaugeLayout);
